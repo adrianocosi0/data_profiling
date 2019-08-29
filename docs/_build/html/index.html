@@ -1,0 +1,201 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Welcome to data_profiling’s documentation! &#8212; data_profiling Beta documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     'Beta',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-src.DataProfiler">
+<span id="welcome-to-data-profiling-s-documentation"></span><h1>Welcome to data_profiling’s documentation!<a class="headerlink" href="#module-src.DataProfiler" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="src.DataProfiler.DataProfiler">
+<em class="property">class </em><code class="descclassname">src.DataProfiler.</code><code class="descname">DataProfiler</code><a class="headerlink" href="#src.DataProfiler.DataProfiler" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class for data profiling</p>
+<dl class="method">
+<dt id="src.DataProfiler.DataProfiler.convert_column">
+<code class="descname">convert_column</code><span class="sig-paren">(</span><em>dataframe</em>, <em>column</em>, <em>convert_to='datetime'</em><span class="sig-paren">)</span><a class="headerlink" href="#src.DataProfiler.DataProfiler.convert_column" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> – Dataframe with column to convert</li>
+<li><strong>column</strong> – Column to convert</li>
+<li><strong>convert_to</strong> – One of “datetime” and “categorical”. Specify column type to convert data to. Defaults to ‘datetime’ can also be ‘categorical’</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">Converted column</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Note:</th><td class="field-body"><p class="first last">Works only on ‘object’ (i.e. generic) type dataframe columns.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.DataProfiler.DataProfiler.describe_columns">
+<code class="descname">describe_columns</code><span class="sig-paren">(</span><em>dataframe, columns, percentiles=[0.25, 0.5, 0.75], graph_types=['hist', 'density', 'pareto'], identify_outliers=True, exclude_outliers_from_graph=True</em><span class="sig-paren">)</span><a class="headerlink" href="#src.DataProfiler.DataProfiler.describe_columns" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return a dictionary of column name to associated summary statistics</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>dataframe</strong> – DataFrame containing column(s) to describe</li>
+<li><strong>columns</strong> – Column(s) to describe in dataframe</li>
+<li><strong>percentiles</strong> – Percentiles (range 0 to 1) to calculate for summary statistics.
+This has effect only on numerical columns</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.DataProfiler.DataProfiler.identify_outliers">
+<code class="descname">identify_outliers</code><span class="sig-paren">(</span><em>dataframe</em>, <em>column</em>, <em>column_stats=None</em><span class="sig-paren">)</span><a class="headerlink" href="#src.DataProfiler.DataProfiler.identify_outliers" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> – </li>
+<li><strong>column</strong> – </li>
+<li><strong>column_stats</strong> – If passed avoids calculating summary stats for data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">boolean array for outlier values</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="src.DataProfiler.DataProfiler.summary_stats">
+<code class="descname">summary_stats</code><span class="sig-paren">(</span><em>dataframe, column, percentiles=[0.25, 0.5, 0.75]</em><span class="sig-paren">)</span><a class="headerlink" href="#src.DataProfiler.DataProfiler.summary_stats" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>dataframe</strong> – Input data</li>
+<li><strong>column</strong> – Column to describe</li>
+<li><strong>percentiles</strong> – Percentiles for numerical column (range 0 to 1)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Summary statistics for column</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<div class="toctree-wrapper compound">
+</div>
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></li>
+<li><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></li>
+<li><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></li>
+</ul>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">data_profiling</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2019, Adriano Cosi.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
